@@ -1,0 +1,396 @@
+/* ==UserStyle==
+@name           Deepseek Elegence
+@namespace      github.com/WWKKX2/deepseek-elegance
+@version        1.0.0
+@description    A refined, elegant light theme with soft gradients and subtle depth.
+@author         WWKKX2
+@license        MIT
+@preprocessor   stylus
+==/UserStyle== */
+
+@-moz-document domain("chat.deepseek.com") {
+/* === Root Variables - 优雅调色板 === */
+:root {
+    /* 主色 - 温暖薰衣草紫 */
+    --primary: #7c6df0;
+    --primary-light: #9b8cf5;
+    --primary-dark: #5a4bd8;
+    --primary-soft: rgba(124, 109, 240, 0.12);
+    --primary-mid: rgba(124, 109, 240, 0.25);
+    --primary-strong: rgba(124, 109, 240, 0.40);
+
+    /* 背景 - 柔和暖白 */
+    --bg-body: #f7f5fb;
+    --bg-card: rgba(255, 255, 255, 0.82);
+    --bg-card-solid: #ffffff;
+    --bg-sidebar: rgba(250, 248, 254, 0.92);
+    --bg-input: rgba(255, 255, 255, 0.88);
+
+    /* 边框 - 细腻灰紫 */
+    --border-subtle: rgba(200, 190, 215, 0.30);
+    --border-soft: rgba(200, 190, 215, 0.45);
+    --border-focus: rgba(124, 109, 240, 0.35);
+
+    /* 文字 - 深灰紫 */
+    --text-primary: #2a2740;
+    --text-secondary: #5f5a78;
+    --text-tertiary: #928ba8;
+    --text-inverse: #ffffff;
+
+    /* 阴影 - 层次感 */
+    --shadow-sm: 0 1px 3px rgba(124, 109, 240, 0.06);
+    --shadow-md: 0 4px 20px rgba(124, 109, 240, 0.08);
+    --shadow-lg: 0 8px 40px rgba(124, 109, 240, 0.12);
+    --shadow-xl: 0 16px 60px rgba(124, 109, 240, 0.16);
+
+    /* 圆角 - 统一 */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+
+    /* 毛玻璃 - 轻量 */
+    --blur-glass: blur(12px);
+}
+
+/* === 全局 === */
+body:not([data-ds-dark-theme]) {
+    background: var(--bg-body) !important;
+    color: var(--text-primary) !important;
+    font-feature-settings: "ss01" on, "ss02" on;
+}
+
+/* === 主容器 - 毛玻璃 === */
+.ds-theme > div,
+.ds-chat-container {
+    background: var(--bg-card) !important;
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+}
+
+/* === 侧边栏 - 精致毛玻璃 === */
+.ds-sidebar,
+.dc04ec1d {
+    background: var(--bg-sidebar) !important;
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border-right: 1px solid var(--border-subtle) !important;
+}
+
+/* === 对话消息 - 优雅卡片 === */
+.ds-message,
+.fbb737a4,
+.dd442025 {
+    background: var(--bg-card) !important;
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.35s ease !important;
+}
+
+.ds-message:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px);
+}
+
+/* === 用户消息 - 渐变背景 === */
+.ds-message-user {
+    background: linear-gradient(135deg, rgba(124, 109, 240, 0.10), rgba(155, 140, 245, 0.06)) !important;
+    border-color: var(--border-soft) !important;
+}
+
+/* === 输入框 - 精致毛玻璃 === */
+.ds-markdown,
+.ds-input-box,
+.ds-chat-input-area {
+    padding: 16px 22px !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1.5px solid var(--border-subtle) !important;
+    background: var(--bg-input) !important;
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    box-shadow: var(--shadow-sm) !important;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.ds-markdown:focus-within,
+.ds-input-box:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px var(--primary-soft), var(--shadow-md) !important;
+}
+
+/* === 输入框文字 === */
+.ds-input-box textarea,
+.ds-chat-input-area textarea {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+    font-weight: 450 !important;
+    letter-spacing: 0.01em !important;
+}
+.ds-input-box textarea::placeholder {
+    color: var(--text-tertiary) !important;
+    font-weight: 400 !important;
+}
+
+/* === 代码块 - 优雅深色 === */
+.md-code-block > pre {
+    background: #1e1b2e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.md-code-block code {
+    color: #e4dff5 !important;
+    font-family: "JetBrains Mono", "Fira Code", monospace !important;
+    font-size: 0.9em !important;
+}
+
+/* === 按钮 - 精致 === */
+.ds-button,
+._70150b8,
+.ds-toggle-button {
+    background: var(--primary-soft) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.ds-button:hover,
+._70150b8:hover {
+    background: var(--primary-mid) !important;
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transform: scale(1.02);
+}
+
+.ds-button:active {
+    transform: scale(0.97);
+}
+
+/* === 选中按钮 === */
+.ds-toggle-button--selected,
+._9f2341b._31a22b0,
+._9f2341b[aria-checked="true"] {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--text-inverse) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* === 模型切换按钮组 === */
+._9f2341b {
+    border-radius: var(--radius-sm) !important;
+    padding: 6px 16px !important;
+    transition: all 0.3s ease !important;
+}
+._9f2341b:hover {
+    background: var(--primary-soft) !important;
+}
+._321831d {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+._31a22b0 ._321831d,
+[aria-checked="true"] ._321831d {
+    color: var(--text-inverse) !important;
+}
+
+/* === 智能搜索按钮 === */
+.f79352dc.ds-toggle-button--selected {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+.f79352dc ._6dbc175 {
+    color: var(--text-inverse) !important;
+}
+.f79352dc svg path {
+    stroke: var(--text-inverse) !important;
+}
+
+/* === 侧边栏文字 === */
+._546d736 .c08e6e93,
+.ds-chat-history-item__title {
+    color: var(--text-secondary) !important;
+    font-weight: 480 !important;
+    transition: color 0.25s ease !important;
+}
+._546d736:hover .c08e6e93 {
+    color: var(--primary) !important;
+}
+.ds-sidebar-title,
+.ds-history-header {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* === 对话文字 === */
+.ds-markdown,
+.ds-message-content,
+.ds-assistant-message-main-content {
+    color: var(--text-primary) !important;
+    line-height: 1.75 !important;
+    font-weight: 440 !important;
+}
+.ds-user-message,
+.ds-message-user .ds-markdown {
+    color: var(--text-primary) !important;
+}
+
+/* === 标题 - 优雅 === */
+.ds-markdown h1 {
+    font-size: 1.6em !important;
+    font-weight: 650 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.02em !important;
+    border-bottom: 2px solid var(--border-subtle) !important;
+    padding-bottom: 6px !important;
+}
+.ds-markdown h2 {
+    font-size: 1.3em !important;
+    font-weight: 620 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.01em !important;
+}
+.ds-markdown h3 {
+    font-weight: 580 !important;
+    color: var(--text-secondary) !important;
+}
+
+/* === 链接 - 优雅 === */
+.ds-markdown a,
+.ds-message-content a {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+    border-bottom: 1.5px solid var(--primary-soft) !important;
+    transition: border-color 0.25s ease !important;
+}
+.ds-markdown a:hover {
+    border-bottom-color: var(--primary) !important;
+}
+
+/* === 表格 - 精致 === */
+.ds-markdown table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    border-radius: var(--radius-sm) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+.ds-markdown table td,
+.ds-markdown table th {
+    border: 1px solid var(--border-subtle) !important;
+    padding: 10px 16px !important;
+    color: var(--text-primary) !important;
+}
+.ds-markdown table th {
+    background: var(--primary-soft) !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+.ds-markdown table tr:nth-child(even) {
+    background: rgba(124, 109, 240, 0.03) !important;
+}
+
+/* === 引用块 - 优雅 === */
+.ds-markdown blockquote {
+    border-left: 4px solid var(--primary) !important;
+    padding: 8px 20px !important;
+    background: var(--primary-soft) !important;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+    color: var(--text-secondary) !important;
+    font-style: italic !important;
+}
+
+/* === 列表 === */
+.ds-markdown ul,
+.ds-markdown ol {
+    padding-left: 24px !important;
+}
+.ds-markdown li {
+    margin: 4px 0 !important;
+    color: var(--text-primary) !important;
+}
+
+/* === 滚动条 - 精致 === */
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+::-webkit-scrollbar-track {
+    background: rgba(200, 190, 215, 0.15) !important;
+    border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-soft) !important;
+    border-radius: 10px !important;
+    transition: background 0.25s ease !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-mid) !important;
+}
+
+/* === 隐藏特定滚动条 === */
+.fbb737a4::-webkit-scrollbar {
+    display: none !important;
+}
+.fbb737a4 {
+    scrollbar-width: none !important;
+}
+
+/* === 表格溢出 === */
+.ds-markdown.ds-assistant-message-main-content table,
+.ds-markdown table {
+    display: block !important;
+    overflow-x: auto !important;
+    max-width: 100% !important;
+}
+.ds-markdown td,
+.ds-markdown th {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+.ds-markdown code {
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+}
+
+/* === 隐藏元素 === */
+._287b564,
+.f8d1e4c0 {
+    display: none !important;
+}
+
+/* === 侧边栏宽度 === */
+.dc04ec1d {
+    --local-sider-width: 320px !important;
+}
+
+/* === 底部输入区 === */
+.ds-input-area-wrapper {
+    background: transparent !important;
+}
+
+/* === 聚焦环 - 优雅 === */
+.ds-focus-ring {
+    --dsl-focus-ring-color: var(--primary) !important;
+    --dsl-focus-ring-offset: 2px !important;
+}
+
+/* === 空状态/加载 === */
+.ds-loading,
+.ds-empty-state {
+    color: var(--text-tertiary) !important;
+}
+
+/* === 分割线 === */
+.ds-divider {
+    border-color: var(--border-subtle) !important;
+}
+}
