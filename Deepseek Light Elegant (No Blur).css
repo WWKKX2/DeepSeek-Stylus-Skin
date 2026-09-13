@@ -1,0 +1,336 @@
+/* ==UserStyle==
+@name           Deepseek Light Elegant (No Blur)
+@namespace      github.com/WWKKX2/Deepseek-Light-Elegant
+@version        1.1.0
+@description    A clean, elegant light theme for DeepSeek chat - no blur effects.
+@author         WWKKX2
+@license        MIT
+@preprocessor   stylus
+==/UserStyle== */
+
+@-moz-document domain("chat.deepseek.com") {
+/* === Root Variables - 亮色优雅主题 === */
+:root {
+    /* 主色 - 柔和蓝紫 */
+    --primary: rgba(120, 130, 220, 1);
+    --primary-10: rgba(120, 130, 220, 0.10);
+    --primary-20: rgba(120, 130, 220, 0.20);
+    --primary-30: rgba(120, 130, 220, 0.30);
+    --primary-50: rgba(120, 130, 220, 0.50);
+    --primary-70: rgba(120, 130, 220, 0.70);
+
+    /* 边框 - 柔和灰 */
+    --border-light: rgba(200, 200, 215, 0.4);
+    --border-medium: rgba(180, 180, 200, 0.5);
+    --border-hover: rgba(120, 130, 220, 0.4);
+
+    /* 背景色 - 干净白/浅灰 */
+    --bg-body: #f5f3f8;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-input: rgba(255, 255, 255, 0.92);
+    --bg-sidebar: rgba(248, 246, 252, 0.95);
+
+    /* 文字颜色 - 深灰/优雅紫灰 */
+    --text-primary: #2d2a3e;
+    --text-secondary: #5a5570;
+    --text-muted: #9a95aa;
+    --text-accent: #787cdc;
+
+    /* 阴影 - 柔和 */
+    --shadow-soft: 0 2px 16px rgba(120, 130, 220, 0.06);
+    --shadow-hover: 0 6px 28px rgba(120, 130, 220, 0.12);
+}
+
+/* === 全局背景 === */
+body:not([data-ds-dark-theme]),
+body[data-ds-light-theme] {
+    background: var(--bg-body) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === 覆盖 DeepSeek 变量 === */
+body:not([data-ds-dark-theme]) {
+    --dsr-bg: transparent;
+    --dsr-input-bg: transparent;
+    --dsr-side-bg: transparent;
+    --dsw-alias-bg-base: transparent !important;
+    --dsw-alias-brand-primary: var(--primary);
+    --dsw-static-neutral-bluish-900: transparent !important;
+}
+
+/* === 主容器 === */
+.ds-theme > div,
+.ds-chat-container,
+.ds-main-content {
+    background: var(--bg-card) !important;
+}
+
+/* === 侧边栏 === */
+.ds-sidebar,
+.ds-history-sidebar,
+.dc04ec1d {
+    background: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-light) !important;
+}
+
+/* === 对话消息气泡 === */
+.ds-message,
+.ds-chat-message,
+.fbb737a4,
+.dd442025 {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-soft) !important;
+    transition: box-shadow 0.25s ease !important;
+}
+
+.ds-message:hover {
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* === 用户消息 - 柔和渐变 === */
+.ds-message-user,
+.ds-user-message {
+    background: linear-gradient(135deg, rgba(120, 130, 220, 0.10), rgba(180, 160, 240, 0.06)) !important;
+    border-color: rgba(120, 130, 220, 0.2) !important;
+}
+
+/* === 输入框 === */
+.ds-markdown,
+.ds-input-box,
+.ds-chat-input-area {
+    padding: 16px 20px !important;
+    border-radius: 24px !important;
+    border: 1px solid var(--border-light) !important;
+    background: var(--bg-input) !important;
+    box-shadow: var(--shadow-soft) !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.ds-markdown:focus-within,
+.ds-input-box:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 20px rgba(120, 130, 220, 0.12) !important;
+}
+
+/* === 输入框文字 === */
+.ds-input-box textarea,
+.ds-chat-input-area textarea,
+.ds-textarea-wrapper textarea {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+}
+
+.ds-input-box textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* === 代码块 === */
+.md-code-block > pre {
+    background: rgba(240, 238, 248, 0.6) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+}
+
+.md-code-block code {
+    color: var(--text-primary) !important;
+}
+
+/* === 按钮 - 修复悬浮文字可见性 === */
+.ds-button,
+._70150b8,
+.ds-toggle-button {
+    background: var(--primary-10) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 20px !important;
+    color: var(--text-secondary) !important;
+    transition: all 0.25s ease !important;
+}
+
+.ds-button:hover,
+._70150b8:hover {
+    background: var(--primary-20) !important;
+    border-color: var(--border-hover) !important;
+    color: #1a1740 !important;
+    box-shadow: var(--shadow-soft) !important;
+}
+
+/* === 选中状态按钮 === */
+.ds-toggle-button--selected,
+._9f2341b._31a22b0,
+._9f2341b[aria-checked="true"] {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+/* === 模型切换按钮组 === */
+._9f2341b {
+    border-radius: 10px !important;
+    padding: 6px 14px !important;
+    transition: all 0.25s ease !important;
+}
+
+._9f2341b:hover {
+    background: var(--primary-20) !important;
+}
+
+._321831d {
+    color: var(--text-secondary) !important;
+}
+
+._31a22b0 ._321831d,
+[aria-checked="true"] ._321831d {
+    color: #ffffff !important;
+}
+
+/* === 智能搜索按钮 === */
+.f79352dc.ds-toggle-button--selected {
+    background: var(--primary-20) !important;
+    border-color: var(--primary) !important;
+}
+.f79352dc ._6dbc175 {
+    color: #9c82d3 !important;
+}
+.f79352dc svg path {
+    stroke: #68568e !important;
+}
+
+/* === 侧边栏文字 === */
+._546d736 .c08e6e93,
+.ds-chat-history-item__title {
+    color: var(--text-secondary) !important;
+    transition: color 0.2s ease !important;
+}
+
+._546d736:hover .c08e6e93 {
+    color: var(--text-accent) !important;
+}
+
+.ds-sidebar-title,
+.ds-history-header {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* === 对话文字 === */
+.ds-markdown,
+.ds-message-content,
+.ds-assistant-message-main-content {
+    color: var(--text-primary) !important;
+}
+
+.ds-user-message,
+.ds-message-user .ds-markdown {
+    color: var(--text-primary) !important;
+}
+
+/* === 标题 === */
+.ds-markdown h1,
+.ds-markdown h2 {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* === 链接 === */
+.ds-markdown a,
+.ds-message-content a {
+    color: var(--text-accent) !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid var(--primary-30) !important;
+}
+.ds-markdown a:hover {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
+}
+
+/* === 表格 === */
+.ds-markdown table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+.ds-markdown table td,
+.ds-markdown table th {
+    border: 1px solid var(--border-light) !important;
+    padding: 8px 14px !important;
+    color: var(--text-primary) !important;
+}
+.ds-markdown table th {
+    background: var(--primary-10) !important;
+    font-weight: 600 !important;
+}
+
+/* === 滚动条 - 优雅轻量 === */
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+::-webkit-scrollbar-track {
+    background: rgba(200, 200, 215, 0.2) !important;
+    border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-30) !important;
+    border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-50) !important;
+}
+
+/* === 隐藏不需要的滚动条 === */
+.fbb737a4::-webkit-scrollbar {
+    display: none !important;
+}
+.fbb737a4 {
+    scrollbar-width: none !important;
+}
+
+/* === 表格溢出修复 === */
+.ds-markdown.ds-assistant-message-main-content table,
+.ds-markdown table {
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+.ds-markdown td,
+.ds-markdown th {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+}
+.ds-markdown code {
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+}
+
+/* === 隐藏不需要的元素 === */
+._287b564 {
+    display: none !important;
+}
+.f8d1e4c0 {
+    display: none !important;
+}
+
+/* === 侧边栏宽度 === */
+.dc04ec1d {
+    --local-sider-width: 320px !important;
+}
+
+/* === 底部输入区 === */
+.ds-input-area-wrapper {
+    background: transparent !important;
+}
+
+/* === 聚焦环 === */
+.ds-focus-ring {
+    --dsl-focus-ring-color: var(--primary) !important;
+    --dsl-focus-ring-offset: 2px !important;
+}
+
+/* === 过渡动画 === */
+* {
+    transition: background 0.2s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.3s ease !important;
+}
+}
