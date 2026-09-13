@@ -1,9 +1,11 @@
 /* ==UserStyle==
-@name           DeepSeek Dark Purple Glassmorphism
+@name           Deepseek-Matugen
 @namespace      github.com/WWKKX2/DeepSeek-Dark-Purple-Glassmorphism-Stylus
-@version        0.0.1
+@version        0.0.3
+@description    A minimal, purple-themed UserStyle for DeepSeek chat, inspired by glassmorphism and liquid glass aesthetics.
 @author         WWKKX2
-@homepageURL    github.com/WWKKX2/DeepSeek-Dark-Purple-Glassmorphism-Stylus
+@homepageURL    https://github.com/WWKKX2/DeepSeek-Dark-Purple-Glassmorphism-Stylus
+@license        MIT
 @preprocessor   stylus
 ==/UserStyle== */
 
@@ -11,7 +13,7 @@
 /* === Root Variables === */
 :root {
     /* Primary Colors */
-    --main-color: rgba(138, 85, 154, 1);
+    --main-color: rgb(99, 60, 111);
     /* Solid purple */
     --main-color-15: rgba(138, 85, 154, 0.15);
     /* 15% opacity */
@@ -44,7 +46,7 @@
     /* Title text color */
     --dark-purple-blocks: rgba(118, 74, 146, 0.6);
     /* Code block background */
-    --text-color: rgb(157, 90, 178);
+    --text-color: rgb(92, 50, 105);
     /* Primary text color */
     --transparent-bg: transparent;
     /* Transparent background */
@@ -203,7 +205,7 @@ body[data-ds-dark-theme] .dd442025 {
     backdrop-filter: var(--blur-medium);
 }
 
-/* === 让 fbb737a4 滚动条消失 === */
+/* === 让 fbb737a4 滚动条彻底消失 === */
 /* 隐藏滚动条 - WebKit 浏览器 (Chrome/Edge/Safari) */
 .fbb737a4::-webkit-scrollbar {
     display: none !important;
@@ -214,5 +216,237 @@ body[data-ds-dark-theme] .dd442025 {
 /* 隐藏滚动条 - Firefox */
 .fbb737a4 {
     scrollbar-width: none !important;
+}
+
+/* === 修复表格超出回复框 === */
+.ds-markdown.ds-assistant-message-main-content table,
+.ds-markdown table {
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.ds-markdown.ds-assistant-message-main-content td,
+.ds-markdown.ds-assistant-message-main-content th,
+.ds-markdown td,
+.ds-markdown th {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    max-width: 300px !important;
+}
+
+/* 如果是纯英文/代码超长，强制换行 */
+.ds-markdown.ds-assistant-message-main-content code,
+.ds-markdown code {
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+}
+
+/* 让消息容器不限制表格的溢出 */
+.ds-message._63c77b1 {
+    overflow: visible !important;
+    max-width: 100% !important;
+}
+
+/* 隐藏 _287b564 元素 */
+._287b564 {
+    display: none !important;
+}
+
+/* === 让 _2090548 按钮悬浮时变色 === */
+._546d736:hover {
+    color: #d3b0f1 !important;  /* 紫色，和你的主题搭配 */
+}
+
+
+
+
+
+
+
+/* 智能搜索按钮变紫 */
+.f79352dc.ds-toggle-button--selected {
+    background: rgba(138, 85, 154, 0.3) !important;
+    border-color: #b388d8 !important;
+}
+.f79352dc ._6dbc175 {
+    color: #b388d8 !important;
+}
+.f79352dc svg path {
+    stroke: #b388d8 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* === 全局字体颜色统一为紫色系 === */
+
+/* 1. 主要对话文字 */
+.ds-markdown,
+.ds-message-content,
+.ds-assistant-message-main-content {
+    color: #d4c0e8 !important;  /* 浅紫色，阅读舒适 */
+}
+
+/* 2. 用户消息文字 */
+.ds-user-message,
+.ds-message-user .ds-markdown {
+    color: #e8d8f5 !important;  /* 更浅的紫色 */
+}
+
+/* 3. 侧边栏历史记录文字 */
+._546d736 .c08e6e93,
+.ds-chat-history-item__title,
+._546d736 {
+    color: #c9a8e0 !important;
+}
+
+/* 4. 侧边栏标题（如"历史对话"） */
+.ds-sidebar-title,
+.ds-history-header {
+    color: #b388d8 !important;
+}
+
+/* 5. 输入框文字 */
+.ds-input-box textarea,
+.ds-chat-input-area textarea,
+.ds-textarea-wrapper textarea {
+    color: #d4c0e8 !important;
+}
+
+/* 6. 输入框占位文字（placeholder） */
+.ds-input-box textarea::placeholder,
+.ds-chat-input-area textarea::placeholder {
+    color: rgba(180, 150, 200, 0.5) !important;
+}
+
+/* 7. 按钮文字（如"发送"、"停止"等） */
+.ds-button__label,
+.ds-button span {
+    color: #d4c0e8 !important;
+}
+
+/* 8. 深色思考/搜索按钮文字 */
+._70150b8 span,
+._70150b8 .ds-button__label {
+    color: #c9a8e0 !important;
+}
+
+/* 9. 思考过程文字（深度思考展开的内容） */
+.ds-thinking-content,
+.ds-reasoning-content {
+    color: #b89ad0 !important;
+}
+
+/* 10. 代码块文字颜色（保留一点对比度） */
+.md-code-block code,
+.md-code-block pre {
+    color: #e8d8f5 !important;
+}
+
+/* 11. 表格内文字 */
+.ds-markdown table td,
+.ds-markdown table th {
+    color: #d4c0e8 !important;
+}
+
+/* 12. 链接文字 */
+.ds-markdown a,
+.ds-message-content a {
+    color: #b388d8 !important;
+}
+.ds-markdown a:hover {
+    color: #d4a0f0 !important;
+}
+
+/* 修改 _121d384 的文字颜色 */
+._121d384 {
+    color: #d4c0e8 !important;
+}
+
+/* 如果它还有背景色，也可以一起改 */
+._121d384 {
+    color: #d4c0e8 !important;
+    background: rgb(72, 31, 120) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* === 模型切换按钮组（快速/专家/识图）改成紫色 === */
+
+/* 1. 按钮选中状态（快速模式） */
+._9f2341b._31a22b0,
+._9f2341b[aria-checked="true"] {
+    background: rgba(138, 85, 154, 0.25) !important;
+    border-color: #b388d8 !important;
+    border-radius: 8px !important;
+}
+
+/* 2. 按钮悬浮效果 */
+._9f2341b:hover {
+    background: rgba(138, 85, 154, 0.15) !important;
+    border-color: rgba(138, 85, 154, 0.4) !important;
+}
+
+/* 3. 选中的按钮悬浮加深 */
+._9f2341b._31a22b0:hover,
+._9f2341b[aria-checked="true"]:hover {
+    background: rgba(138, 85, 154, 0.35) !important;
+}
+
+/* 4. 按钮文字颜色 */
+._321831d {
+    color: #c9a8e0 !important;
+}
+
+/* 5. 选中状态的文字颜色更亮 */
+._31a22b0 ._321831d,
+[aria-checked="true"] ._321831d {
+    color: #d4a0f0 !important;
+}
+
+/* 6. SVG 图标颜色（所有按钮） */
+._9f2341b svg path,
+._9f2341b svg g path {
+    stroke: #c9a8e0 !important;
+}
+
+/* 7. SVG 图标填充色（部分图标有 fill） */
+._9f2341b svg path[fill-opacity="1"] {
+    fill: #c9a8e0 !important;
+}
+
+/* 8. 选中状态 SVG 图标更亮 */
+._31a22b0 svg path,
+[aria-checked="true"] svg path {
+    stroke: #d4a0f0 !important;
+}
+._31a22b0 svg path[fill-opacity="1"],
+[aria-checked="true"] svg path[fill-opacity="1"] {
+    fill: #d4a0f0 !important;
+}
+
+/* 9. 背景滑块（切换指示器） */
+.c15ec89f {
+    background: rgba(138, 85, 154, 0.3) !important;
 }
 }
