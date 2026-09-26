@@ -1,36 +1,25 @@
-/* ==UserStyle==
-@name           Deepseek-Matugen
-@namespace      github.com/WWKKX2/DeepSeek-Dark-Purple-Glassmorphism-Stylus
-@version        0.0.3
-@description    A minimal, purple-themed UserStyle for DeepSeek chat, inspired by glassmorphism and liquid glass aesthetics.
-@author         WWKKX2
-@homepageURL    https://github.com/WWKKX2/DeepSeek-Dark-Purple-Glassmorphism-Stylus
-@license        MIT
-@preprocessor   stylus
-==/UserStyle== */
-
 @-moz-document domain("chat.deepseek.com") {
 /* === Root Variables === */
 :root {
     /* Primary Colors */
-    --main-color: rgb(99, 60, 111);
-    /* Solid purple */
-    --main-color-15: rgba(138, 85, 154, 0.15);
+    --main-color: rgb(140, 55, 90);
+    /* Solid pink */
+    --main-color-15: rgba(220, 110, 150, 0.15);
     /* 15% opacity */
-    --main-color-35: rgba(138, 85, 154, 0.35);
+    --main-color-35: rgba(220, 110, 150, 0.35);
     /* 35% opacity */
-    --main-color-50: rgba(138, 85, 154, 0.50);
+    --main-color-50: rgba(220, 110, 150, 0.50);
     /* 50% opacity */
-    --main-color-60: rgba(138, 85, 154, 0.60);
+    --main-color-60: rgba(220, 110, 150, 0.60);
     /* 60% opacity */
-    --main-color-70: rgba(138, 85, 154, 0.70);
+    --main-color-70: rgba(220, 110, 150, 0.70);
     /* 70% opacity */
     /* Border Colors */
-    --border-color: rgba(213, 149, 255, 0.5);
+    --border-color: rgba(255, 165, 200, 0.5);
     /* Standard border */
-    --border-color-35: rgba(213, 149, 255, 0.35);
+    --border-color-35: rgba(255, 165, 200, 0.35);
     /* Lighter border */
-    --border-color-60: rgba(213, 149, 255, 0.6);
+    --border-color-60: rgba(255, 165, 200, 0.6);
     /* Hover border */
     /* Blur Effects */
     --blur-small: blur(10px);
@@ -40,13 +29,19 @@
     --blur-large: blur(20px);
     /* Large blur for sidebars */
     /* Additional Colors */
-    --dark-purple: rgba(101, 71, 120, 0.55);
-    /* Darker purple for blocks */
-    --dark-blue-title: #608cd8;
-    /* Title text color */
-    --dark-purple-blocks: rgba(118, 74, 146, 0.6);
-    /* Code block background */
-    --text-color: rgb(92, 50, 105);
+    --dark-purple: rgba(150, 80, 110, 0.55);
+    /* Darker pink for blocks */
+    --dark-blue-title: #e88ab8;
+    /* Title text color (pink) */
+    --dark-purple-blocks: rgba(75, 30, 55, 0.85);
+    /* Code block header (dark) */
+    --code-bg: rgba(45, 18, 35, 0.78);
+    /* Code block body (dark) */
+    --code-border: rgba(220, 110, 150, 0.22);
+    /* Code block border */
+    --code-text: #f0c8dd;
+    /* Code text color */
+    --text-color: rgb(130, 55, 85);
     /* Primary text color */
     --transparent-bg: transparent;
     /* Transparent background */
@@ -54,7 +49,7 @@
 
 /* === General Layout === */
 body[data-ds-dark-theme] {
-    background: linear-gradient(to top, rgb(33, 24, 62), rgb(52, 23, 88)), url("") center/cover no-repeat;
+    background: linear-gradient(to top, rgb(60, 25, 45), rgb(90, 30, 65)), url("") center/cover no-repeat;
     height: 100vh;
 
     /* Override DeepSeek variables for transparency */
@@ -64,7 +59,7 @@ body[data-ds-dark-theme] {
     --dsw-alias-bg-base: var(--transparent-bg) !important;
     --dsw-alias-button-primary-hover: var(--main-color-70);
     --dsw-static-neutral-bluish-900: transparent !important;
-    --dsw-alias-brand-primary: rgb(157, 90, 178);
+    --dsw-alias-brand-primary: rgb(230, 100, 150);
 }
 
 /* Gradient overlay for theme container */
@@ -80,24 +75,31 @@ body[data-ds-dark-theme] .dd442025 {
     border: 2px solid var(--border-color);
 }
 
-/* === Code Blocks === */
+/* === Code Blocks (dark glass) === */
 .md-code-block {
     --ds-md-code-banner-background-color: var(--dark-purple-blocks);
 }
 
 .md-code-block > pre {
-    background: var(--main-color-15);
-    border: 2px solid var(--dark-purple-blocks);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
     backdrop-filter: var(--blur-small);
     border-radius: 0 0 14px 14px;
 }
 
+/* Inline code：深色底，与代码块呼应 */
+.ds-markdown code {
+    background: rgba(70, 28, 50, 0.65);
+    color: var(--code-text);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
 
 /* === Scrollbars === */
 .ds-scroll-area__gutters .ds-scroll-area__horizontal-bar,
 .ds-scroll-area__gutters .ds-scroll-area__vertical-bar {
     display: none !important;
-    background-color: rgba(43, 22, 79, .79) !important;
+    background-color: rgba(79, 22, 43, .79) !important;
 }
 
 /* === Miscellaneous Elements === */
@@ -121,7 +123,7 @@ body[data-ds-dark-theme] .dd442025 {
 ._5a8ac7a {
     background: var(--main-color-70);
     backdrop-filter: var(--blur-small);
-    border: 2px solid #635278bd;
+    border: 2px solid #8a4a6abd;
 }
 
 ._546d736.b64fb9ae {
@@ -206,14 +208,12 @@ body[data-ds-dark-theme] .dd442025 {
 }
 
 /* === 让 fbb737a4 滚动条彻底消失 === */
-/* 隐藏滚动条 - WebKit 浏览器 (Chrome/Edge/Safari) */
 .fbb737a4::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
 }
 
-/* 隐藏滚动条 - Firefox */
 .fbb737a4 {
     scrollbar-width: none !important;
 }
@@ -257,196 +257,163 @@ body[data-ds-dark-theme] .dd442025 {
 
 /* === 让 _2090548 按钮悬浮时变色 === */
 ._546d736:hover {
-    color: #d3b0f1 !important;  /* 紫色，和你的主题搭配 */
+    color: #f1b0d3 !important;
 }
 
-
-
-
-
-
-
-/* 智能搜索按钮变紫 */
+/* 智能搜索按钮变粉 */
 .f79352dc.ds-toggle-button--selected {
-    background: rgba(138, 85, 154, 0.3) !important;
-    border-color: #b388d8 !important;
+    background: rgba(220, 110, 150, 0.3) !important;
+    border-color: #d888b3 !important;
 }
 .f79352dc ._6dbc175 {
-    color: #b388d8 !important;
+    color: #d888b3 !important;
 }
 .f79352dc svg path {
-    stroke: #b388d8 !important;
+    stroke: #d888b3 !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* === 全局字体颜色统一为紫色系 === */
+/* === 全局字体颜色统一为粉色系 === */
 
 /* 1. 主要对话文字 */
 .ds-markdown,
 .ds-message-content,
 .ds-assistant-message-main-content {
-    color: #d4c0e8 !important;  /* 浅紫色，阅读舒适 */
+    color: #e8c0d4 !important;
 }
 
 /* 2. 用户消息文字 */
 .ds-user-message,
 .ds-message-user .ds-markdown {
-    color: #e8d8f5 !important;  /* 更浅的紫色 */
+    color: #f5d8e8 !important;
 }
 
 /* 3. 侧边栏历史记录文字 */
 ._546d736 .c08e6e93,
 .ds-chat-history-item__title,
 ._546d736 {
-    color: #c9a8e0 !important;
+    color: #e0a8c9 !important;
 }
 
 /* 4. 侧边栏标题（如"历史对话"） */
 .ds-sidebar-title,
 .ds-history-header {
-    color: #b388d8 !important;
+    color: #d888b3 !important;
 }
 
 /* 5. 输入框文字 */
 .ds-input-box textarea,
 .ds-chat-input-area textarea,
 .ds-textarea-wrapper textarea {
-    color: #d4c0e8 !important;
+    color: #e8c0d4 !important;
 }
 
 /* 6. 输入框占位文字（placeholder） */
 .ds-input-box textarea::placeholder,
 .ds-chat-input-area textarea::placeholder {
-    color: rgba(180, 150, 200, 0.5) !important;
+    color: rgba(200, 150, 180, 0.5) !important;
 }
 
 /* 7. 按钮文字（如"发送"、"停止"等） */
 .ds-button__label,
 .ds-button span {
-    color: #d4c0e8 !important;
+    color: #e8c0d4 !important;
 }
 
 /* 8. 深色思考/搜索按钮文字 */
 ._70150b8 span,
 ._70150b8 .ds-button__label {
-    color: #c9a8e0 !important;
+    color: #e0a8c9 !important;
 }
 
 /* 9. 思考过程文字（深度思考展开的内容） */
 .ds-thinking-content,
 .ds-reasoning-content {
-    color: #b89ad0 !important;
+    color: #d09ab8 !important;
 }
 
-/* 10. 代码块文字颜色（保留一点对比度） */
+/* 10. 代码块文字颜色（在深色底上使用柔粉） */
 .md-code-block code,
 .md-code-block pre {
-    color: #e8d8f5 !important;
+    color: var(--code-text) !important;
 }
 
 /* 11. 表格内文字 */
 .ds-markdown table td,
 .ds-markdown table th {
-    color: #d4c0e8 !important;
+    color: #e8c0d4 !important;
 }
 
 /* 12. 链接文字 */
 .ds-markdown a,
 .ds-message-content a {
-    color: #b388d8 !important;
+    color: #d888b3 !important;
 }
 .ds-markdown a:hover {
-    color: #d4a0f0 !important;
+    color: #f0a0d4 !important;
 }
 
 /* 修改 _121d384 的文字颜色 */
 ._121d384 {
-    color: #d4c0e8 !important;
+    color: #e8c0d4 !important;
+    background: rgb(120, 31, 72) !important;
 }
 
-/* 如果它还有背景色，也可以一起改 */
-._121d384 {
-    color: #d4c0e8 !important;
-    background: rgb(72, 31, 120) !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* === 模型切换按钮组（快速/专家/识图）改成紫色 === */
+/* === 模型切换按钮组（快速/专家/识图）改成粉色 === */
 
 /* 1. 按钮选中状态（快速模式） */
 ._9f2341b._31a22b0,
 ._9f2341b[aria-checked="true"] {
-    background: rgba(138, 85, 154, 0.25) !important;
-    border-color: #b388d8 !important;
+    background: rgba(220, 110, 150, 0.25) !important;
+    border-color: #d888b3 !important;
     border-radius: 8px !important;
 }
 
 /* 2. 按钮悬浮效果 */
 ._9f2341b:hover {
-    background: rgba(138, 85, 154, 0.15) !important;
-    border-color: rgba(138, 85, 154, 0.4) !important;
+    background: rgba(220, 110, 150, 0.15) !important;
+    border-color: rgba(220, 110, 150, 0.4) !important;
 }
 
 /* 3. 选中的按钮悬浮加深 */
 ._9f2341b._31a22b0:hover,
 ._9f2341b[aria-checked="true"]:hover {
-    background: rgba(138, 85, 154, 0.35) !important;
+    background: rgba(220, 110, 150, 0.35) !important;
 }
 
 /* 4. 按钮文字颜色 */
 ._321831d {
-    color: #c9a8e0 !important;
+    color: #e0a8c9 !important;
 }
 
 /* 5. 选中状态的文字颜色更亮 */
 ._31a22b0 ._321831d,
 [aria-checked="true"] ._321831d {
-    color: #d4a0f0 !important;
+    color: #f0a0d4 !important;
 }
 
 /* 6. SVG 图标颜色（所有按钮） */
 ._9f2341b svg path,
 ._9f2341b svg g path {
-    stroke: #c9a8e0 !important;
+    stroke: #e0a8c9 !important;
 }
 
 /* 7. SVG 图标填充色（部分图标有 fill） */
 ._9f2341b svg path[fill-opacity="1"] {
-    fill: #c9a8e0 !important;
+    fill: #e0a8c9 !important;
 }
 
 /* 8. 选中状态 SVG 图标更亮 */
 ._31a22b0 svg path,
 [aria-checked="true"] svg path {
-    stroke: #d4a0f0 !important;
+    stroke: #f0a0d4 !important;
 }
 ._31a22b0 svg path[fill-opacity="1"],
 [aria-checked="true"] svg path[fill-opacity="1"] {
-    fill: #d4a0f0 !important;
+    fill: #f0a0d4 !important;
 }
 
 /* 9. 背景滑块（切换指示器） */
 .c15ec89f {
-    background: rgba(138, 85, 154, 0.3) !important;
+    background: rgba(220, 110, 150, 0.3) !important;
 }
 }
